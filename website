@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certi-Step | High-Performance Scented Grip Insoles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: #151c2e;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-green: #10b981;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #2a354f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: rgba(10, 15, 29, 0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- PAGE SYSTEM --- */
+        .page {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: radial-gradient(circle at center, #1e2942 0%, #0a0f1d 100%);
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #0a0f1d;
+            padding: 0.9rem 2.2rem;
+            font-weight: 700;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: none;
+        }
+
+        /* --- CARDS & GRIDS --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2.2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* --- SCENT POD CARDS --- */
+        .scent-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scent-card:hover {
+            border-color: var(--accent-green);
+            transform: scale(1.02);
+        }
+
+        .scent-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- ATHLETE PERSONA SECTION --- */
+        .persona-box {
+            background: linear-gradient(135deg, #151c2e 0%, #1e2942 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #0a0f1d;
+        }
+
+        .list-check {
+            list-style: none;
+        }
+
+        .list-check li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .list-check li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="navigateTo('home')">CERTI-STEP</div>
+            <nav>
+                <ul>
+                    <li><a onclick="navigateTo('home')" id="nav-home" class="active">Home</a></li>
+                    <li><a onclick="navigateTo('tech')" id="nav-tech">Technology & Materials</a></li>
+                    <li><a onclick="navigateTo('scents')" id="nav-scents">Scented Pods</a></li>
+                    <li><a onclick="navigateTo('diy')" id="nav-diy">DIY & Customization</a></li>
+                    <li><a onclick="navigateTo('athlete')" id="nav-athlete">Built For Athletes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE 1: HOME PAGE -->
+    <section id="page-home" class="page active">
+        <div class="hero">
+            <h1>Zero Shoe Slip.<br><span>Fresh Shoes Every Time.</span></h1>
+            <p>Certi-Step combines high-friction carbon marine vinyl, adaptive memory foam cushioning, and replaceable antimicrobial scent pods to keep your feet locked in and odor-free.</p>
+            <div class="btn-group">
+                <button class="btn" onclick="navigateTo('tech')">Explore Technology</button>
+                <button class="btn btn-secondary" onclick="navigateTo('scents')">View Scent Profiles</button>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 1.5rem; font-size: 2rem;">Why Certi-Step Wins</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge">No Slipping</span>
+                <h3>High Friction Surface</h3>
+                <p>Features carbon-infused marine grade vinyl and rubber/silicone traction patterns so your feet stay locked without heavy socks.</p>
+            </div>
+            <div class="card">
+                <span class="badge">Maximum Comfort</span>
+                <h3>Adaptive Memory Foam</h3>
+                <p>Placed directly underneath the friction layer to conform around your soles, creating total contact and superior foot placement.</p>
+            </div>
+            <div class="card">
+                <span class="badge">Odor Vanisher</span>
+                <h3>Scented Heel Pods</h3>
+                <p>Self-freshening heel inserts that banish yucky smells automatically, even through your sweatiest games and workouts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: TECHNOLOGY & MATERIALS -->
+    <section id="page-tech" class="page">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Material Science & Technology</h1>
+        <p style="color: var(--text-muted); margin-bottom: 3rem;">Engineered from top to bottom for maximum friction, lasting shape retention, and severe impact absorption.</p>
+
+        <h2 style="color: var(--accent-cyan); margin-bottom: 1rem;">1. Multi-Layer Construction</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Memory Foam Layer</h3>
+                <p>Placed underneath high friction top material. Makes the insole far more comfortable and allows it to contour around your foot naturally for increased sole contact.</p>
+            </div>
+            <div class="card">
+                <h3>Carbon-Infused Marine Grade Vinyl</h3>
+                <p>Thin and durable top texture designed specifically to increase foot contact friction and eliminate in-shoe slipping during high-speed movements.</p>
+            </div>
+            <div class="card">
+                <h3>Rubber / Silicone Patterns</h3>
+                <p>Applied directly as precision patterns on the insoles to provide targeted grip where force is applied most.</p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-cyan); margin-top: 3rem; margin-bottom: 1rem;">2. Base Material Options</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Polyurethane (PU)</h3>
+                <p>Strong, durable, and extremely long-lasting. Holds its structural ergonomic shape under continuous heavy pressure.</p>
+            </div>
+            <div class="card">
+                <h3>EVA Foam</h3>
+                <p>Lightweight and exceptionally soft. Ideal for cushioning hard impacts and reducing fatigue.</p>
+            </div>
+            <div class="card">
+                <h3>Impact Shock Gel</h3>
+                <p>Strategic gel inserts positioned at the heel or forefoot for maximum, targeted shock absorption.</p>
+            </div>
+            <div class="card">
+                <h3>Silicone Rubber</h3>
+                <p>Flexible and moisture-resistant base material for smooth foot transitions and durable longevity.</p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-cyan); margin-top: 3rem; margin-bottom: 1rem;">3. Engineered Grippy Patterns</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Cross Hatch Pattern</h3>
+                <p>Multidirectional friction lines that prevent feet from sliding forward or laterally.</p>
+            </div>
+            <div class="card">
+                <h3>Hexagon Grid</h3>
+                <p>Geometric balance structure distributing force evenly across six axes during sharp cuts.</p>
+            </div>
+            <div class="card">
+                <h3>Impact Dot Clusters</h3>
+                <p>High-density grip clusters concentrated specifically around the areas of most foot impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: SCENTED PODS -->
+    <section id="page-scents" class="page">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Scented Heel Pod Lineup</h1>
+        <p style="color: var(--text-muted); margin-bottom: 3rem;">Replaceable scent pods embedded into the heel pad to neutralize shoe odors and kill bacteria automatically.</p>
+
+        <div class="grid">
+            <div class="scent-card" onclick="openPodDetail('peppermint')">
+                <div class="scent-icon">❄️</div>
+                <h3>Peppermint & Menthol</h3>
+                <span class="badge">Cooling Defense</span>
+                <p>Provides a crisp, cooling sensation on the feet while offering strong natural antibacterial qualities.</p>
+            </div>
+
+            <div class="scent-card" onclick="openPodDetail('teatree')">
+                <div class="scent-icon">🌿</div>
+                <h3>Tea Tree (Melaleuca)</h3>
+                <span class="badge">Industry Standard</span>
+                <p>Highly antifungal and antibacterial. Ideal for preventing athlete's foot and stubborn shoe odor.</p>
+            </div>
+
+            <div class="scent-card" onclick="openPodDetail('eucalyptus')">
+                <div class="scent-icon">🍃</div>
+                <h3>Eucalyptus & Spearmint</h3>
+                <span class="badge">Active Sport Blend</span>
+                <p>Delivers a fresh, invigorating "sport" scent with natural, long-lasting deodorizing properties.</p>
+            </div>
+
+            <div class="scent-card" onclick="openPodDetail('cedarwood')">
+                <div class="scent-icon">🌲</div>
+                <h3>Cedarwood & Cypress</h3>
+                <span class="badge">Woody Moisture Shield</span>
+                <p>A clean, woody scent that naturally resists moisture-loving microbes and neutralizes stale smells.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC SCENT POD DETAIL PAGES -->
+    <section id="pod-peppermint" class="page">
+        <button class="btn btn-secondary" onclick="navigateTo('scents')" style="margin-bottom: 1.5rem;">← Back to Scent Lineup</button>
+        <div class="card">
+            <div class="scent-icon">❄️</div>
+            <h2>Peppermint & Menthol Pod</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Crisp, cooling relief for overworked feet.</p>
+            <hr style="border-color: var(--border-color); margin: 1.5rem 0;">
+            <h3>Key Benefits:</h3>
+            <ul class="list-check" style="margin-top: 1rem;">
+                <li>Creates an immediate crisp, ice-cooling foot sensation inside tight athletic footwear.</li>
+                <li>Strong natural antibacterial compounds destroy odor-causing bacteria instantly.</li>
+                <li>Perfect for long practices in high temperatures.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="pod-teatree" class="page">
+        <button class="btn btn-secondary" onclick="navigateTo('scents')" style="margin-bottom: 1.5rem;">← Back to Scent Lineup</button>
+        <div class="card">
+            <div class="scent-icon">🌿</div>
+            <h2>Tea Tree (Melaleuca) Pod</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">The foot care industry standard.</p>
+            <hr style="border-color: var(--border-color); margin: 1.5rem 0;">
+            <h3>Key Benefits:</h3>
+            <ul class="list-check" style="margin-top: 1rem;">
+                <li>Maximum antifungal and antibacterial protection.</li>
+                <li>Specifically formulated to prevent athlete's foot spores from surviving in moist shoes.</li>
+                <li>Eliminates persistent locker room odors at the source.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="pod-eucalyptus" class="page">
+        <button class="btn btn-secondary" onclick="navigateTo('scents')" style="margin-bottom: 1.5rem;">← Back to Scent Lineup</button>
+        <div class="card">
+            <div class="scent-icon">🍃</div>
+            <h2>Eucalyptus & Spearmint Pod</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Invigorating active sport scent.</p>
+            <hr style="border-color: var(--border-color); margin: 1.5rem 0;">
+            <h3>Key Benefits:</h3>
+            <ul class="list-check" style="margin-top: 1rem;">
+                <li>Delivers an energetic, clean aroma suited for high-intensity training.</li>
+                <li>Natural spearmint deodorizers mask sweat smells during active play.</li>
+                <li>Eucalyptus essential oils keep shoe linings fresh for extended periods.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="pod-cedarwood" class="page">
+        <button class="btn btn-secondary" onclick="navigateTo('scents')" style="margin-bottom: 1.5rem;">← Back to Scent Lineup</button>
+        <div class="card">
+            <div class="scent-icon">🌲</div>
+            <h2>Cedarwood & Cypress Pod</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Earthy, moisture-resisting defense.</p>
+            <hr style="border-color: var(--border-color); margin: 1.5rem 0;">
+            <h3>Key Benefits:</h3>
+            <ul class="list-check" style="margin-top: 1rem;">
+                <li>Clean, premium woody aroma that resists moisture-loving microbes.</li>
+                <li>Neutralizes deep-set stale smells in heavy athletic gear and leather boots.</li>
+                <li>Long-lasting essential oil release.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PAGE 4: DIY MATERIALS & CUSTOMIZATION -->
+    <section id="page-diy" class="page">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">DIY Materials & Customization Kit</h1>
+        <p style="color: var(--text-muted); margin-bottom: 3rem;">Build your own custom Certi-Step prototype or customize your existing insoles at home.</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>1. Base Insoles</h3>
+                <p>Standard pair of trim-to-fit athletic or replacement foam insoles (EVA or PU bases work best).</p>
+            </div>
+            <div class="card">
+                <h3>2. Grip Compound</h3>
+                <p>100% clear silicone sealant OR heavy-duty non-slip fabric puff paint for custom traction pads.</p>
+            </div>
+            <div class="card">
+                <h3>3. Surface Prep Tools</h3>
+                <p>Rubbing alcohol & fine 120-grit sandpaper. (Lightly scuffing top fabric creates a permanent bond for silicone).</p>
+            </div>
+            <div class="card">
+                <h3>4. Application Tools</h3>
+                <p>Caulk gun or squeeze tube, a pencil to map out your grip grid, and a plastic circular stencil for precise dots.</p>
+            </div>
+        </div>
+
+        <div class="persona-box" style="margin-top: 3rem;">
+            <h2 style="color: var(--accent-cyan); margin-bottom: 1rem;">How To Apply Your Custom Pattern</h2>
+            <ol style="padding-left: 1.2rem; color: var(--text-muted);">
+                <li style="margin-bottom: 0.8rem;"><strong style="color: var(--text-light);">Clean & Prep:</strong> Wipe down the base insole with rubbing alcohol and scuff high-impact areas using 120-grit sandpaper.</li>
+                <li style="margin-bottom: 0.8rem;"><strong style="color: var(--text-light);">Map Pattern:</strong> Use your pencil and stencil to outline Cross Hatch, Hexagon, or Impact Dot clusters.</li>
+                <li style="margin-bottom: 0.8rem;"><strong style="color: var(--text-light);">Apply Silicone:</strong> Squeeze clear silicone or puff paint precisely onto mapped zones.</li>
+                <li style="margin-bottom: 0.8rem;"><strong style="color: var(--text-light);">Cure & Wear:</strong> Allow 24 hours to fully bond before inserting into your shoes.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- PAGE 5: ATHLETE PERSONA (MARCUS) -->
+    <section id="page-athlete" class="page">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Built For Athletes</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Designed specifically for active males & females aged 12 to 35 who demand peak performance.</p>
+
+        <div class="persona-box">
+            <div class="persona-header">
+                <div class="persona-avatar">M</div>
+                <div>
+                    <h2>Meet Marcus, 17</h2>
+                    <p style="color: var(--accent-cyan); font-weight: 600;">High School Soccer Player (Fast Winger)</p>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                Marcus relies on sudden cuts and rapid acceleration on the pitch. He beats up his soccer boots every single season and faces three major problems every match day.
+            </p>
+
+            <div class="grid">
+                <div class="card" style="background: rgba(0,0,0,0.2);">
+                    <h3 style="color: #ef4444;">His Annoyances</h3>
+                    <ul class="list-check">
+                        <li><strong style="color: #f8fafc;">Shoe Slip:</strong> Feet slide inside cleats during sharp cuts, causing nasty blisters and wasting acceleration speed.</li>
+                        <li><strong style="color: #f8fafc;">Too Tight:</strong> Grip socks stop slipping, but they are way too thick and make his cleats feel crammed.</li>
+                        <li><strong style="color: #f8fafc;">The Stench:</strong> His gear bag smells terrible after practice, causing embarrassment around teammates.</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background: rgba(0,0,0,0.2);">
+                    <h3 style="color: var(--accent-green);">Why He Uses Certi-Step</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        Certi-Step gives Marcus the non-slip friction of athletic grip socks without added bulk, while the built-in scent pod keeps his boots fresh automatically.
+                    </p>
+                    <h3 style="color: var(--accent-cyan); margin-top: 1rem;">His Goals</h3>
+                    <ul class="list-check">
+                        <li>Stay locked into cleats for sharper, faster cuts.</li>
+                        <li>Play back-to-back games 100% blister-free.</li>
+                        <li>Keep gear bag from smelling like a locker room.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Certi-Step Performance Soles. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active style from nav links
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if(targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Highlight nav link
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if(activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            // Scroll smooth to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openPodDetail(podId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            const targetPod = document.getElementById(`pod-${podId}`);
+            if(targetPod) {
+                targetPod.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
